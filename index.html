@@ -3,24 +3,79 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Embedded Website</title>
+<title>Retro Bowl</title>
+<style>
+    /* Style the body with a black background */
+    body {
+        background-color: black;
+        margin: 0;
+        overflow: hidden; /* Hide scrollbars */
+    }
+
+    /* Style the iframe to fit within the screen */
+    iframe {
+        width: 90%;
+        height: 90vh; /* 90% of the viewport height */
+        max-width: 90vw; /* 90% of the viewport width */
+        max-height: 90vh; /* 90% of the viewport height */
+        margin: 5vh auto; /* Center the iframe */
+        display: block;
+    }
+
+    /* Style the full-screen button */
+    .fullscreen-button {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        z-index: 9999;
+        background-color: #ffffff;
+        color: #000000;
+        padding: 5px 10px;
+        border: none;
+        cursor: pointer;
+    }
+
+    /* Style the "about blank" button */
+    .about-blank-button {
+        position: absolute;
+        top: 40px;
+        right: 10px;
+        z-index: 9999;
+        background-color: #ffffff;
+        color: #000000;
+        padding: 5px 10px;
+        border: none;
+        cursor: pointer;
+    }
+</style>
 </head>
 <body>
 
-<iframe src="https://game316009.konggames.com/gamez/0031/6009/live/index.html" width="100%" height="800px" frameborder="0" scrolling="auto"></iframe>
+<iframe src="https://game316009.konggames.com/gamez/0031/6009/live/index.html" frameborder="0" scrolling="auto"></iframe>
 
-</body>
-</html>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Embedded Website</title>
-</head>
-<body>
+<button class="fullscreen-button" onclick="toggleFullscreen()">Full Screen</button>
+<button class="about-blank-button" onclick="openAboutBlank()">About Blank</button>
 
-<iframe src="https://game316009.konggames.com/gamez/0031/6009/live/index.html" width="100%" height="800px" frameborder="0" scrolling="auto"></iframe>
+<script>
+    // Function to toggle full screen
+    function toggleFullscreen() {
+        var elem = document.documentElement;
+        if (!document.fullscreenElement) {
+            elem.requestFullscreen().catch(err => {
+                console.log(`Error attempting to enable full-screen mode: ${err.message} (${err.name})`);
+            });
+        } else {
+            if (document.exitFullscreen) {
+                document.exitFullscreen();
+            }
+        }
+    }
+
+    // Function to open a new full-screen window with about:blank
+    function openAboutBlank() {
+        window.open('about:blank', '_blank', 'fullscreen=yes');
+    }
+</script>
 
 </body>
 </html>
